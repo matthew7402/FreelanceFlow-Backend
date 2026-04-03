@@ -31,6 +31,7 @@ export const handleSendMessage = (io, socket) => {
   socket.on("sendMessage", async (data) => {
     try {
       const { projectId, senderId, content } = data;
+      
 
       // ✅ Check if sender belongs to the project
       const { rowCount } = await pool.query(
@@ -49,9 +50,12 @@ export const handleSendMessage = (io, socket) => {
       const result = await pool.query(
         `INSERT INTO messages (project_id, sender_id, content)
          VALUES ($1, $2, $3)
-         RETURNING *`,
+         RETURNING 
+  id, project_id, sender_id, content, created_at,
+  (SELECT name FROM users WHERE id = sender_id) as sender_name`,
         [projectId, senderId, content]
       );
+
 
       const message = result.rows[0];
 

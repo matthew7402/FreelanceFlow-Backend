@@ -1,5 +1,5 @@
 import express from "express";
-import { authMiddleware } from "../middleware/auth.js";
+import { authMiddleware } from "../Middleware/auth.js";
 import { createWorkspace,getWorkspaces,inviteMember } from "../controllers/workspaces.js";
 
 const router = express.Router();

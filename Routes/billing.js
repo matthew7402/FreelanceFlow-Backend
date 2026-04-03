@@ -1,12 +1,12 @@
 import express from "express";
 import { stripe } from "../Config/stripe.js";
 import { requireWorkspaceOwner } from "../middleware/workspaceOwner.js";
-import { authMiddleware } from "../middleware/auth.js";
+import { authMiddleware } from "../Middleware/auth.js";
 import { pool } from "../db.js";
 
 const router = express.Router();
-console.log("aaa");
-console.log(process.env.STRIPE_SECRET_KEY);
+//console.log("aaa");
+//console.log(process.env.STRIPE_SECRET_KEY);
 router.post(
   "/workspaces/:workspaceId/create-checkout-session",
   authMiddleware,
@@ -27,8 +27,8 @@ router.post(
           },
         ],
 
-        success_url: "http://localhost:3000/success",
-        cancel_url: "http://localhost:3000/cancel",
+        success_url: "http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url: "http://localhost:5173/cancel",
 
         metadata: {
           workspaceId,

@@ -3,7 +3,7 @@ const router = express.Router();
 import { pool } from "../db.js";
 import { requireWorkspaceMember } from "../middleware/workspace.js";
 import { requireWorkspaceOwner } from "../middleware/workspaceOwner.js";
-import { authMiddleware } from "../middleware/auth.js";
+import { authMiddleware } from "../Middleware/auth.js";
 // Create project
 router.post(
   "/workspaces/:workspaceId/projects",

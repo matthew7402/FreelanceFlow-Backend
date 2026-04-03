@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS workspaces (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     owner_id INT REFERENCES users(id),
-    created_at TIMESTAMP DEFAULT NOW()
+    created_at TIMESTAMP DEFAULT NOW(),
+    subscription_status VARCHAR(50) DEFAULT 'inactive',
 );
 
 -- Workspace members (many-to-many)
@@ -30,7 +31,6 @@ CREATE TABLE IF NOT EXISTS projects (
     workspace_id INT REFERENCES workspaces(id) ON DELETE CASCADE,
     name VARCHAR(100) NOT NULL,
     description TEXT,
-    status VARCHAR(50) DEFAULT 'active',
     created_at TIMESTAMP DEFAULT NOW()
 );
 

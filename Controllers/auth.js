@@ -31,3 +31,15 @@ export const login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+export const getMe = async (req, res) => {
+  try {
+    const userId = req.user.id; // authMiddleware must run
+    const result = await pool.query(
+      "SELECT id, name, email FROM users WHERE id = $1",
+      [userId]
+    );
+    res.json(result.rows[0]);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};

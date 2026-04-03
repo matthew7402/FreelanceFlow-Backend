@@ -47,19 +47,19 @@ const io = new Server(server, {
 
 // ====== REAL-TIME CHAT ======
 io.on("connection", (socket) => {
-  console.log("User connected:", socket.id);
+  //console.log("User connected:", socket.id);
 
   // Join a project room
   socket.on("joinProject", (projectId) => {
     socket.join(`project_${projectId}`);
-    console.log(`Socket ${socket.id} joined project_${projectId}`);
+    //console.log(`Socket ${socket.id} joined project_${projectId}`);
   });
 
   // Delegate sendMessage logic to controller
   handleSendMessage(io, socket);
 
   socket.on("disconnect", () => {
-    console.log("User disconnected:", socket.id);
+   // console.log("User disconnected:", socket.id);
   });
 });
 

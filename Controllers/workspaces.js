@@ -40,6 +40,7 @@ export const getWorkspaces = async (req, res) => {
         w.name,
         w.owner_id,
         w.created_at,
+        w.subscription_status,
         wm.role
       FROM workspaces w
       JOIN workspace_members wm
