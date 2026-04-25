@@ -8,7 +8,7 @@ import {
   getWorkspaceProjects,
   updateProject,
   deleteProject
-} from "../Controller/project.js";
+} from "../Controllers/project.js";
 
 const router = express.Router();
 

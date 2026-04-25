@@ -3,6 +3,15 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const { Pool } = pkg;
+console.log(process.env.DATABASE_URL)
+export const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+/*
+const { Pool } = pkg;
 
 export const pool = new Pool({
   user: process.env.DB_USER,
@@ -11,5 +20,8 @@ export const pool = new Pool({
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
 });
+*/
 
-pool.on('connect', () => console.log('✅ Connected to PostgreSQL'));
+pool.on('connect', () => {
+  console.log('✅ Connected to Supabase PostgreSQL');
+});

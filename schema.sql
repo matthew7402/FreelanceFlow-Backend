@@ -14,10 +14,10 @@ CREATE TABLE IF NOT EXISTS workspaces (
     name VARCHAR(100) NOT NULL,
     owner_id INT REFERENCES users(id),
     created_at TIMESTAMP DEFAULT NOW(),
-    subscription_status VARCHAR(50) DEFAULT 'inactive',
+    subscription_status VARCHAR(50) DEFAULT 'inactive'
 );
 
--- Workspace members (many-to-many)
+-- Workspace members
 CREATE TABLE IF NOT EXISTS workspace_members (
     id SERIAL PRIMARY KEY,
     workspace_id INT REFERENCES workspaces(id) ON DELETE CASCADE,

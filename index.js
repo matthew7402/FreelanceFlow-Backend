@@ -43,11 +43,13 @@ app.get("/api/health/db", async (req, res) => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: { origin: "*" }, // allow all origins for testing
+  
+  
 });
 
 // ====== REAL-TIME CHAT ======
 io.on("connection", (socket) => {
-  //console.log("User connected:", socket.id);
+  console.log("User connected:", socket.id);
 
   // Join a project room
   socket.on("joinProject", (projectId) => {
@@ -62,6 +64,12 @@ io.on("connection", (socket) => {
    // console.log("User disconnected:", socket.id);
   });
 });
+const testDB = async () => {
+  const res = await pool.query('SELECT NOW()');
+  console.log(res.rows);
+};
+
+testDB();
 
 // ====== START SERVER ======
 const PORT = process.env.PORT || 5000;
