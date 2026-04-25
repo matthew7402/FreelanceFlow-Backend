@@ -1,7 +1,7 @@
 import express from "express";
 import { authMiddleware } from "../Middleware/auth.js";
-import { requireWorkspaceMember } from "../middleware/workspace.js";
-import { requireWorkspaceOwner } from "../middleware/workspaceOwner.js";
+import { requireWorkspaceMember } from "../Middleware/workspace.js";
+import { requireWorkspaceOwner } from "../Middleware/workspaceOwner.js";
 
 import {
   createProject,

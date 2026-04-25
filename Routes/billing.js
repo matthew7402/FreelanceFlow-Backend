@@ -1,6 +1,6 @@
 import express from "express";
 import { authMiddleware } from "../Middleware/auth.js";
-import { requireWorkspaceOwner } from "../middleware/workspaceOwner.js";
+import { requireWorkspaceOwner } from "../Middleware/workspaceOwner.js";
 
 import {
   createCheckoutSession,
