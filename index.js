@@ -17,7 +17,10 @@ import { handleSendMessage } from "./Controllers/messagesController.js";
 console.log("Loaded key:", process.env.STRIPE_SECRET_KEY);
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  credentials: true
+}));
 app.use(express.json());
 
 // ====== ROUTES ======
